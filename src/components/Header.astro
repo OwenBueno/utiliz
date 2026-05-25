@@ -1,0 +1,17 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header class="header">
+  <a href={import.meta.env.BASE_URL} class="logo" aria-label="util.tools home">
+    util<span>.</span>tools
+  </a>
+  <div class="search-bar" role="button" tabindex="0" aria-label="Search tools (coming soon)">
+    <i class="ti ti-search" aria-hidden="true"></i>
+    <span>search tools...</span>
+    <kbd>⌘K</kbd>
+  </div>
+  <div class="header-right">
+    <ThemeToggle />
+  </div>
+</header>

@@ -1,0 +1,228 @@
+.app {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: 42px 1fr;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  transition: background 0.2s, color 0.2s;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 16px;
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.logo {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 280px;
+  height: 26px;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.search-bar span {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--sans);
+}
+
+.search-bar kbd {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  border: 1px solid var(--border2);
+  padding: 1px 5px;
+  margin-left: auto;
+}
+
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-btn {
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--text2);
+  background: none;
+  border: 1px solid var(--border2);
+  padding: 3px 10px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.15s;
+}
+
+.theme-btn:hover {
+  border-color: var(--text2);
+  color: var(--text);
+}
+
+.tag-active {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  font-size: 9px;
+  font-family: var(--mono);
+  padding: 2px 8px;
+  color: var(--text2);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  border-right: 1px solid var(--border);
+  background: var(--bg2);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-section {
+  padding: 16px 0 8px;
+}
+
+.sidebar-section--footer {
+  margin-top: auto;
+  padding-bottom: 16px;
+}
+
+.sidebar-label {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text3);
+  padding: 0 14px;
+  margin-bottom: 4px;
+  font-family: var(--mono);
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px;
+  font-size: 12px;
+  color: var(--text2);
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all 0.1s;
+  user-select: none;
+}
+
+.sidebar-item:hover {
+  background: var(--bg3);
+  color: var(--text);
+}
+
+.sidebar-item.active {
+  border-left-color: var(--accent);
+  color: var(--text);
+  background: var(--bg3);
+}
+
+.sidebar-item i {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.sidebar-item.active i {
+  color: var(--accent);
+}
+
+.sidebar-item--info {
+  font-size: 10px;
+  color: var(--text3);
+  cursor: default;
+}
+
+.sidebar-item--info:hover {
+  background: transparent;
+  color: var(--text3);
+}
+
+.workspace {
+  display: grid;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.tool-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tool-header {
+  border-bottom: 1px solid var(--border);
+  padding: 9px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  background: var(--bg);
+}
+
+.tool-title {
+  font-size: 11px;
+  font-family: var(--mono);
+  color: var(--text2);
+  letter-spacing: 0.05em;
+}
+
+.tool-badge {
+  font-size: 9px;
+  font-family: var(--mono);
+  padding: 2px 8px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+  text-transform: uppercase;
+  background: var(--bg2);
+}

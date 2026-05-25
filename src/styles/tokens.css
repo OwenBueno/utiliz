@@ -1,0 +1,28 @@
+:root {
+  --bg: #000000;
+  --bg2: #0a0a0a;
+  --bg3: #111111;
+  --border: #1f1f1f;
+  --border2: #2a2a2a;
+  --text: #fafafa;
+  --text2: #a1a1aa;
+  --text3: #52525b;
+  --accent: #22c55e;
+  --accent2: #f59e0b;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --sans: 'Inter', system-ui, sans-serif;
+  --radius: 0px;
+}
+
+html.light-mode {
+  --bg: #ffffff;
+  --bg2: #fafafa;
+  --bg3: #f4f4f5;
+  --border: #e4e4e7;
+  --border2: #d4d4d8;
+  --text: #09090b;
+  --text2: #52525b;
+  --text3: #a1a1aa;
+  --accent: #16a34a;
+  --accent2: #d97706;
+}

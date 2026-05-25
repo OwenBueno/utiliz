@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "text-analyzer",
+    "name": "Text Analyzer",
+    "category": "text",
+    "icon": "text-size",
+    "phase": 1
+  },
+  {
+    "slug": "image-converter",
+    "name": "Image Converter",
+    "category": "media",
+    "icon": "file-type-jpg",
+    "phase": 1
+  },
+  {
+    "slug": "md-previewer",
+    "name": "MD Previewer",
+    "category": "dev",
+    "icon": "markdown",
+    "phase": 1
+  }
+]

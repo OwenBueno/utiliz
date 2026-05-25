@@ -1,0 +1,51 @@
+---
+interface Props {
+  title: string;
+}
+
+import '../styles/tokens.css';
+import '../styles/global.css';
+import '../styles/shell.css';
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Privacy-first client-side utility tools" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+    <script is:inline>
+      (function () {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.add('light-mode');
+        }
+      })();
+    </script>
+    <title>{title} · util.tools</title>
+    <style lang="scss">
+      @use 'webcoreui/styles' as *;
+
+      @include setup(
+        (
+          theme: dark,
+          includeUtilities: false,
+        )
+      );
+    </style>
+  </head>
+  <body>
+    <slot />
+    <script>
+      import { registerServiceWorker } from '../lib/theme.ts';
+      registerServiceWorker();
+    </script>
+  </body>
+</html>

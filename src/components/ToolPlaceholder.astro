@@ -1,0 +1,19 @@
+---
+interface Props {
+  slug: string;
+  name: string;
+  phase?: number;
+}
+
+const { slug, name, phase = 1 } = Astro.props;
+---
+
+<div class="tool-pane">
+  <div class="tool-header">
+    <span class="tool-title">{slug}.tsx</span>
+    <span class="tool-badge">phase {phase}</span>
+  </div>
+  <div class="placeholder">
+    <p>{name} — coming soon</p>
+  </div>
+</div>
