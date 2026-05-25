@@ -1,0 +1,13 @@
+---
+interface Props {
+  slug: string;
+  badge: string;
+}
+
+const { slug, badge } = Astro.props;
+---
+
+<div class="tool-header">
+  <span class="tool-title">{slug}.tsx</span>
+  <span class="tool-badge">{badge}</span>
+</div>

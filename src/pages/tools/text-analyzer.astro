@@ -1,8 +1,71 @@
 ---
 import AppShell from '../../layouts/AppShell.astro';
-import ToolPlaceholder from '../../components/ToolPlaceholder.astro';
+import ToolHeader from '../../components/ToolHeader.astro';
+import '../../styles/tools/shared.css';
 ---
 
 <AppShell title="Text Analyzer" activeTool="text-analyzer">
-  <ToolPlaceholder slug="text-analyzer" name="Text Analyzer" />
+  <div class="tool-pane">
+    <ToolHeader slug="text-analyzer" badge="live" />
+    <div class="split-v">
+      <div class="pane">
+        <div class="pane-label">input — paste or type</div>
+        <textarea
+          class="editor-area"
+          id="textInput"
+          placeholder="Type or paste text here..."
+          autofocus
+        ></textarea>
+      </div>
+      <div class="pane">
+        <div class="pane-label">statistics</div>
+        <div class="stats-grid">
+          <div class="stat-row">
+            <span class="stat-label">Characters (total)</span>
+            <span class="stat-val accent" id="charTotal">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Characters (no spaces)</span>
+            <span class="stat-val" id="charNoSpace">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Words</span>
+            <span class="stat-val accent" id="wordCount">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Sentences</span>
+            <span class="stat-val" id="sentCount">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Paragraphs</span>
+            <span class="stat-val" id="paraCount">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Reading time</span>
+            <span class="stat-val accent" id="readTime">0s</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Speaking time</span>
+            <span class="stat-val" id="speakTime">0s</span>
+          </div>
+        </div>
+        <div class="action-bar">
+          <button type="button" class="action-btn" id="copyBtn">
+            <i class="ti ti-copy" aria-hidden="true"></i> copy
+          </button>
+          <button type="button" class="action-btn" id="clearBtn">
+            <i class="ti ti-trash" aria-hidden="true"></i> clear
+          </button>
+          <button type="button" class="action-btn" id="caseBtn">
+            <i class="ti ti-letter-case" aria-hidden="true"></i> case
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </AppShell>
+
+<script>
+  import { initTextAnalyzer } from '../../scripts/tools/text-analyzer.ts';
+  initTextAnalyzer();
+</script>

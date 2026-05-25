@@ -1,8 +1,50 @@
 ---
 import AppShell from '../../layouts/AppShell.astro';
-import ToolPlaceholder from '../../components/ToolPlaceholder.astro';
+import ToolHeader from '../../components/ToolHeader.astro';
+import '../../styles/tools/shared.css';
+
+const sampleMd = `# Hello, World!
+
+This is a **live** markdown previewer.
+
+## Features
+- Real-time rendering
+- Synchronized scroll
+- Line numbers
+
+> Inspired by code editors.
+
+\`\`\`js
+const hello = () => "world";
+\`\`\`
+`;
 ---
 
 <AppShell title="MD Previewer" activeTool="md-previewer">
-  <ToolPlaceholder slug="md-previewer" name="MD Previewer" />
+  <div class="tool-pane">
+    <ToolHeader slug="md-previewer" badge="live render" />
+    <div class="split-h" style="flex: 1; overflow: hidden;">
+      <div class="pane md-left">
+        <div class="pane-label">editor — raw markdown</div>
+        <div style="display: flex; flex: 1; overflow: hidden;">
+          <div class="line-nums" id="lineNums">1</div>
+          <textarea class="md-textarea" id="mdInput">{sampleMd}</textarea>
+        </div>
+      </div>
+      <div class="pane">
+        <div class="pane-label">preview — rendered html</div>
+        <div class="md-preview" id="mdPreview"></div>
+      </div>
+    </div>
+    <div class="status-bar">
+      <span class="status-item">lines: <span id="lineCount">1</span></span>
+      <span class="status-item">words: <span id="mdWords">0</span></span>
+      <span class="status-item status-item--sync">● scroll sync on</span>
+    </div>
+  </div>
 </AppShell>
+
+<script>
+  import { initMdPreviewer } from '../../scripts/tools/md-previewer.ts';
+  initMdPreviewer();
+</script>

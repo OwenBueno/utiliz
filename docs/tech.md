@@ -176,6 +176,45 @@ GitHub Pages cannot set `Cross-Origin-Opener-Policy` or `Cross-Origin-Embedder-P
 
 Never bundle heavy libraries globally — lazy-load per tool route.
 
+## Testing
+
+### Stack
+
+| Layer | Tool | Command |
+|-------|------|---------|
+| Unit | Vitest + happy-dom | `npm test` |
+| E2E | Playwright (Chromium) | `npm run test:e2e` |
+| Coverage | Vitest v8 | `npm run test:coverage` |
+
+### Layout
+
+```
+tests/
+├── unit/           # one file per src/lib module
+├── e2e/            # one smoke spec per tool + shell
+└── fixtures/       # sample PNG, markdown inputs
+```
+
+### Conventions
+
+1. **New lib module** — add `tests/unit/<module>.test.ts` in the same PR.
+2. **New tool** — add one Playwright smoke spec in `tests/e2e/`.
+3. **Heavy deps (pdf-lib, WASM)** — mock in unit tests; one happy-path E2E with a small fixture.
+4. **Astro markup / CSS** — prefer E2E for layout regressions; do not unit-test components unless logic-heavy.
+5. **DOM glue scripts** — keep thin; extract testable logic into `src/lib/`.
+
+### CI
+
+GitHub Actions runs `npm test`, `npm run test:e2e`, and `npm run build` before deploy (see [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml)).
+
+### Per-phase expansion
+
+| Roadmap phase | Add tests for |
+|---------------|---------------|
+| Phase 2 PDF | `pdf-utils.ts` unit; E2E merge small PDF fixtures |
+| Phase 3 AI | `heuristic-rewriter.ts` unit; skip model download in CI |
+| Phase 4 WASM | mock `crossOriginIsolated`; E2E optional |
+
 ## Build & Deploy
 
 ```text

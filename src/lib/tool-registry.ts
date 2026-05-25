@@ -27,7 +27,10 @@ export function getToolsByCategory(): Map<string, Tool[]> {
   return grouped;
 }
 
+export function resolveToolPath(slug: string, baseUrl: string): string {
+  return `${baseUrl}tools/${slug}/`;
+}
+
 export function getToolPath(slug: string): string {
-  const base = import.meta.env.BASE_URL;
-  return `${base}tools/${slug}/`;
+  return resolveToolPath(slug, import.meta.env.BASE_URL);
 }

@@ -6,7 +6,9 @@ A privacy-first, ad-free utility hub where every tool runs entirely in your brow
 
 ```bash
 npm install
-npm run dev      # http://localhost:4321/utiliz/
+npm test           # unit tests
+npm run test:e2e   # Playwright smoke tests (builds + preview first)
+npm run dev        # http://localhost:4321/utiliz/
 npm run build
 npm run preview
 ```
@@ -15,7 +17,17 @@ npm run preview
 
 Pushes to `main` deploy via GitHub Actions to [GitHub Pages](https://owenbueno.github.io/utiliz/).
 
-One-time setup: Repository **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+### One-time GitHub setup (required)
+
+The deploy job uses `actions/deploy-pages`, which **only works after Pages is enabled with GitHub Actions as the source**. If deploy fails with `404 Not Found`, complete these steps:
+
+1. Open [Settings → Pages](https://github.com/OwenBueno/utiliz/settings/pages) for this repo.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”).
+3. Re-run the failed workflow (Actions tab → select the run → **Re-run all jobs**).
+
+After the first successful deploy, the site URL should appear in the workflow’s `deploy` job output and under Settings → Pages.
+
+**Requirements:** Node.js ≥ 22.12.0 (see `.nvmrc`). Public repos get free GitHub Pages; private repos need a paid plan for Pages.
 
 ## Documentation
 
